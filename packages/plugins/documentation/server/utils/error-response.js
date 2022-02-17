@@ -9,6 +9,7 @@ module.exports = {
       properties: {
         status: {
           type: 'integer',
+          enum : [400, 401, 403, 404, 500],
         },
         name: {
           type: 'string',

@@ -53,4 +53,9 @@ module.exports = async ({ strapi }) => {
     .plugin('documentation')
     .service('documentation')
     .generateFullDoc();
+
+  await strapi
+    .plugin('documentation')
+    .service('documentation')
+    .generateFullDoc2();
 };
