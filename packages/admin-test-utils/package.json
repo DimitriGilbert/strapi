@@ -1,6 +1,6 @@
 {
   "name": "@strapi/admin-test-utils",
-  "version": "4.0.7",
+  "version": "4.1.0",
   "private": true,
   "description": "Test utilities for the Strapi administration panel",
   "license": "MIT",
@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.16.1",
-    "enzyme": "3.9.0",
+    "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.6",
     "jest-styled-components": "7.0.2"
   },
