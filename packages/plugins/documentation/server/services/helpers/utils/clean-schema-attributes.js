@@ -220,15 +220,42 @@ const cleanSchemaAttributes = (
         }
 
         typeMap.set(attribute.target, true);
-        const targetAttributes = strapi.contentType(attribute.target).attributes;
+        // const targetAttributes = strapi.contentType(attribute.target).attributes;
 
+        // attributesCopy[prop] = {
+        //   type: 'object',
+        //   properties: {
+        //     data: getSchemaData(
+        //       isListOfEntities,
+        //       cleanSchemaAttributes(targetAttributes, { typeMap, isRequest })
+        //     ),
+        //   },
+        // };
+
+        let tdata = {};
+        const scRef = _.upperFirst(attribute.target.split('::')[1].split('.')[0])
+
+        if (isListOfEntities) {
+          tdata = {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                id: { type: 'number' },
+                attributes: { type: 'object', "#ref":`#/components/schemas/${scRef}` },
+              },
+            },
+          };
+        } else {
+          tdata = {
+            type: 'object',
+            "#ref":`#/components/schemas/${scRef}`,
+          }
+        }
         attributesCopy[prop] = {
           type: 'object',
           properties: {
-            data: getSchemaData(
-              isListOfEntities,
-              cleanSchemaAttributes(targetAttributes, { typeMap, isRequest })
-            ),
+            data: tdata,
           },
         };
 
